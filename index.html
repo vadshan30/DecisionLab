@@ -1,0 +1,314 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DecisionLab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <span>◈</span> DecisionLab
+        </div>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#create">Create Decision</a>
+            <a href="#history">History</a>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="eyebrow">DECISION INTELLIGENCE PLATFORM</p>
+
+                <h1>
+                    Make better decisions.<br>
+                    <span>See the trade-offs.</span>
+                </h1>
+
+                <p class="hero-text">
+                    Compare your options, analyze important factors,
+                    and explore different scenarios before making a decision.
+                </p>
+
+                <button class="primary-btn" onclick="scrollToCreate()">
+                    Create a Decision →
+                </button>
+            </div>
+
+            <div class="hero-visual">
+                <div class="decision-card">
+                    <div class="card-header">
+                        <span>Current Decision</span>
+                        <span class="status">ANALYZING</span>
+                    </div>
+
+                    <h3>Choose a Laptop</h3>
+
+                    <div class="mini-option">
+                        <div>
+                            <strong>Option A</strong>
+                            <small>Performance Laptop</small>
+                        </div>
+                        <strong>82</strong>
+                    </div>
+
+                    <div class="mini-option">
+                        <div>
+                            <strong>Option B</strong>
+                            <small>Budget Laptop</small>
+                        </div>
+                        <strong>76</strong>
+                    </div>
+
+                    <div class="mini-bar">
+                        <span></span>
+                    </div>
+
+                    <p class="card-note">
+                        Based on 4 decision factors
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CREATE DECISION -->
+        <section class="create-section" id="create">
+
+            <div class="section-heading">
+                <p class="eyebrow">STEP 01</p>
+                <h2>Create Your Decision</h2>
+                <p>Define the decision you want to analyze.</p>
+            </div>
+
+            <div class="form-card">
+
+                <label for="decisionTitle">Decision Title</label>
+                <input
+                    type="text"
+                    id="decisionTitle"
+                    placeholder="Example: Which laptop should I buy?"
+                >
+
+                <label for="decisionDescription">Description</label>
+                <textarea
+                    id="decisionDescription"
+                    placeholder="Briefly describe your decision..."
+                ></textarea>
+
+                <div class="form-grid">
+
+                    <div>
+                        <label for="option1">Option 1</label>
+                        <input
+                            type="text"
+                            id="option1"
+                            placeholder="Example: Laptop A"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="option2">Option 2</label>
+                        <input
+                            type="text"
+                            id="option2"
+                            placeholder="Example: Laptop B"
+                        >
+                    </div>
+
+                </div>
+
+                <button class="primary-btn" onclick="startAnalysis()">
+                    Start Analysis →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ANALYSIS -->
+        <section class="analysis-section hidden" id="analysis">
+
+            <div class="section-heading">
+                <p class="eyebrow">STEP 02</p>
+                <h2>Decision Analysis</h2>
+                <p>Adjust the importance of each factor.</p>
+            </div>
+
+            <div class="analysis-grid">
+
+                <div class="factors-card">
+
+                    <h3>Decision Factors</h3>
+
+                    <div class="factor">
+                        <div class="factor-top">
+                            <label>Cost</label>
+                            <span id="costValue">30%</span>
+                        </div>
+
+                        <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            value="30"
+                            id="cost"
+                            oninput="updateWeights()"
+                        >
+                    </div>
+
+                    <div class="factor">
+                        <div class="factor-top">
+                            <label>Performance</label>
+                            <span id="performanceValue">30%</span>
+                        </div>
+
+                        <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            value="30"
+                            id="performance"
+                            oninput="updateWeights()"
+                        >
+                    </div>
+
+                    <div class="factor">
+                        <div class="factor-top">
+                            <label>Long-term Value</label>
+                            <span id="valueValue">25%</span>
+                        </div>
+
+                        <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            value="25"
+                            id="value"
+                            oninput="updateWeights()"
+                        >
+                    </div>
+
+                    <div class="factor">
+                        <div class="factor-top">
+                            <label>Risk</label>
+                            <span id="riskValue">15%</span>
+                        </div>
+
+                        <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            value="15"
+                            id="risk"
+                            oninput="updateWeights()"
+                        >
+                    </div>
+
+                    <div class="weight-total">
+                        <span>Total Weight</span>
+                        <strong id="totalWeight">100%</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="results-card">
+
+                    <div class="results-header">
+                        <div>
+                            <p class="eyebrow">LIVE RESULT</p>
+                            <h3 id="resultTitle">Your Decision</h3>
+                        </div>
+
+                        <span class="analysis-status">LIVE</span>
+                    </div>
+
+                    <div class="score-container">
+
+                        <div class="score-option">
+                            <div class="score-info">
+                                <span id="option1Name">Option 1</span>
+                                <strong id="score1">82</strong>
+                            </div>
+
+                            <div class="score-bar">
+                                <span id="bar1"></span>
+                            </div>
+                        </div>
+
+                        <div class="score-option">
+                            <div class="score-info">
+                                <span id="option2Name">Option 2</span>
+                                <strong id="score2">76</strong>
+                            </div>
+
+                            <div class="score-bar">
+                                <span id="bar2"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="insight">
+                        <span>✦</span>
+                        <div>
+                            <strong>Decision Insight</strong>
+                            <p id="insightText">
+                                Adjust the factors to explore how your decision changes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <button class="secondary-btn" onclick="saveDecision()">
+                        Save Decision
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HISTORY -->
+        <section class="history-section" id="history">
+
+            <div class="section-heading">
+                <p class="eyebrow">YOUR DATA</p>
+                <h2>Decision History</h2>
+                <p>Your saved decisions will appear here.</p>
+            </div>
+
+            <div id="historyContainer" class="history-container">
+                <div class="empty-history">
+                    <span>◌</span>
+                    <p>No decisions saved yet.</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <div class="logo">
+            <span>◈</span> DecisionLab
+        </div>
+
+        <p>Turn uncertainty into structured decisions.</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
