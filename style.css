@@ -487,3 +487,115 @@ footer p {
         align-items: flex-start;
     }
 }
+/* =========================
+   OPTION RATING MATRIX
+========================= */
+
+.rating-card {
+    margin-top: 25px;
+    padding: 30px;
+    background: #f7f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 16px;
+}
+
+.rating-header {
+    margin-bottom: 30px;
+}
+
+.rating-header h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.rating-header p:last-child {
+    color: #747b85;
+    font-size: 13px;
+}
+
+.rating-table-wrapper {
+    overflow-x: auto;
+}
+
+.rating-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid #e1e4e8;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.rating-table th,
+.rating-table td {
+    padding: 18px;
+    text-align: left;
+    border-bottom: 1px solid #e7e9ed;
+}
+
+.rating-table th {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #747b85;
+    background: #f7f8fa;
+}
+
+.rating-table td {
+    font-size: 14px;
+}
+
+.rating-table tr:last-child td {
+    border-bottom: none;
+}
+
+.rating-factor {
+    font-weight: 600;
+}
+
+.rating-weight {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    color: #858b94;
+}
+
+.rating-control {
+    min-width: 190px;
+}
+
+.rating-value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.rating-value strong {
+    font-size: 16px;
+}
+
+.rating-value span {
+    font-size: 12px;
+    color: #747b85;
+}
+
+.rating-slider {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    accent-color: #6c63ff;
+}
+
+@media (max-width: 850px) {
+
+    .rating-card {
+        padding: 20px;
+    }
+
+    .rating-table th,
+    .rating-table td {
+        padding: 14px;
+    }
+
+}
